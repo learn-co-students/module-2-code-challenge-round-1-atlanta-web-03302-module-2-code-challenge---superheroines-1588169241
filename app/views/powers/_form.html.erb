@@ -1,0 +1,25 @@
+<ul>
+<% if !@power.errors.empty? %>
+    <% @power.errors.full_messages.each do |message|%>
+        <li><%= message %></li>
+    <% end %>
+<% end %>
+</ul>
+<br>
+<%= form_for(@power) do |f|%>
+    <%= f.label :name%>
+    <%= f.text_field :name%> <br>
+    <br>
+    <%= f.label :description%>
+    <%= f.text_area :description%> <br>
+    <br>    
+    Here Are All The Heroines With This Power: <br>
+    <br>
+    <% @heroines.each do |heroine|%>
+        <%= check_box_tag('heroine_ids[]', heroine.id)%>
+        <%= heroine.name%>
+        <br>
+    <% end %>
+    <br>
+    <%= f.submit %>
+<% end %>

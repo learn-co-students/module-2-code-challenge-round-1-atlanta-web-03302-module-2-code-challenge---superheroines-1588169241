@@ -1,0 +1,12 @@
+<h1>Here is the Power you selected:</h1>
+<h2>Power Name: <%= @power.name %></h2>
+<h2>Power Description:</h2>
+<p><%= @power.description %> </p>
+
+<h3>Heroines With This Power:</h3>
+<% @power.heroines.each do |heroine|%>
+    <%= link_to "#{heroine.name} also known as #{heroine.super_name}", heroine_path(heroine.id)%> <br>
+<% end %>
+<br>
+
+<%= link_to "Edit This Power", edit_power_path(@power)%>
